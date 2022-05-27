@@ -19,7 +19,7 @@ class Command(BaseCommand):
     help = 'Update cards and corners Datas'
 
     def handle(self, *args, **options):
-        for id_pokemon in range(1, 2):
+        for id_pokemon in range(1, NUMBER_OF_POKEMON+1):
             response_json = requests.get(f"{API_ENDPOINT}/pokemon-species/{id_pokemon}/", verify=False).json()
 
             pokemon_id = response_json.get('id')
@@ -40,7 +40,7 @@ class Command(BaseCommand):
                                        espece=pokemon_espece,
                                        type=pokemon_type_list,
                                        pokemon_legendaire=pokemon_is_legendary,
-                                       pokemon_mythique=pokemon_is_mythical
+                                       pokemon_mythique=pokemon_is_mythical,
                                        img_link=f"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{pokemon_id}.png")
                 print(f"Pokemon : {pokemon_name} add to Database Successfully")
 
