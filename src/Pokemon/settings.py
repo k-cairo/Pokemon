@@ -55,7 +55,7 @@ ROOT_URLCONF = 'Pokemon.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR), "Pokedex/templates"],
+        'DIRS': [os.path.join(BASE_DIR, "Pokemon/templates"), (os.path.join(BASE_DIR, "Pokedex/templates"))],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

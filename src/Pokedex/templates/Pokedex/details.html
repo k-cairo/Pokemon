@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div>
+    <div class="datas">
+        <img class="pokemon-img" src={{ pokemon.img_link }}>
+        <table class="infos">
+            <thead>
+            <tr>
+                <th>Height</th>
+                <th>Weight</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="text-center">{{ height }} dm</td>
+                <td class="text-center">{{ weight }} hg</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="datas2">
+    <table>
+        <thead>
+        <tr>
+            <th>Hp</th>
+            <th>Attack</th>
+            <th>Defense</th>
+            <th>Special Attack</th>
+            <th>Special Defense</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="text-center">{{ hp_stat }}</td>
+            <td class="text-center">{{ attack_stat }}</td>
+            <td class="text-center">{{ defense_stat }}</td>
+            <td class="text-center">{{ special_attack_stat }}</td>
+            <td class="text-center">{{ special_defense_stat }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock content %}

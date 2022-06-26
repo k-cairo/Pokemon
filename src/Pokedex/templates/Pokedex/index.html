@@ -1,66 +1,22 @@
+{% extends "base.html" %}
 {% load static %}
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PokéKévax</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-</head>
-<body>
 
-<!--NAVBAR SECTION-->
-<nav class="navbar navbar-expand-lg bg-danger">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img src="{% static 'Pokedex/images/pokeball.png' %}" alt="" width="30" height="24"
-                 class="d-inline-block align-text-top">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#">PokéKévax</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#">Contact</a>
-                </li>
-            </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
-    </div>
-</nav>
-
-<!--LOGO POKEMON SECTION-->
-<div style="display: flex; justify-content: center; margin: 20 0">
-    <img style="width: 20%;" src="{% static 'Pokedex/images/pokemon.jpg' %}" alt="">
-</div>
-
-<!--POKEMON CARDS SECTION-->
+{% block content %}
 <div style="margin: 50px 50px;">
-    <div class="row">
+    <div id="myTable" class="row">
         {% for pokemon in pokemons %}
         <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
             <div style="margin: 10px 0;">
-                <div class="card text-center">
+                <div class="card text-center {% if 'grass' in pokemon.type %}grass {% elif 'fire' in pokemon.type %}fire {% elif 'water' in pokemon.type %}water {% elif 'normal' in pokemon.type %}normal {% elif 'poison' in pokemon.type %}poison {% elif 'bug' in pokemon.type %}bug {% elif 'flying' in pokemon.type %}flying {% elif 'psychic' in pokemon.type %}psychic {% elif 'ghost' in pokemon.type %}ghost {% elif 'dark' in pokemon.type %}dark {% elif 'rock' in pokemon.type %}rock {% elif 'steel' in pokemon.type %}steel {% elif 'ice' in pokemon.type %}ice {% elif 'dragon' in pokemon.type %}dragon {% elif 'electric' in pokemon.type %}electric {% elif 'fighting' in pokemon.type %}fighting {% elif 'fairy' in pokemon.type %}fairy {% elif 'ground' in pokemon.type %}ground {% elif 'humanshape' in pokemon.type %}humanshape {% elif 'mineral' in pokemon.type %}mineral {% endif %}">
                     <div class="card-body">
-                        <h5 class="card-title">{{ pokemon.nom }}</h5>
-                        <img style="width: 70%"
-                             src={{ pokemon.img_link }}>
-                        <p class="card-text">#{{ pokemon.pokemon_id }}</p>
+                        <a href="{% url 'Pokedex-detail' pokemon.nom %}">
+                            <h5 class="card-title">{{ pokemon.nom }}</h5>
+                            <img style="width: 70%"
+                                 src={{ pokemon.img_link }}>
+                            <p class="card-text">Pokemon Type : {{ pokemon.type.0 }}</p>
+                            <p class="card-text">#{{ pokemon.pokemon_id }}</p>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -68,10 +24,4 @@
         {% endfor %}
     </div>
 </div>
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-        crossorigin="anonymous"></script>
-</body>
-</html>
+{% endblock content %}
