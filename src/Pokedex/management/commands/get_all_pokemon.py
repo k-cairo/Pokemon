@@ -10,7 +10,7 @@ API_ENDPOINT = f"https://pokeapi.co/api/v2"
 
 
 class Command(BaseCommand):
-    help = 'Update cards and corners Datas'
+    help = 'Update Pokemon Database'
 
     def handle(self, *args, **options):
         for id_pokemon in range(1, NUMBER_OF_POKEMON+1):
